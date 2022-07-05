@@ -63,15 +63,7 @@ header {
 }
 
 
-.cardBottom {
-  div {
-    display: flex;
-    flex-direction: column;
-  }
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+
 .tt{
   display: flex;
 }
@@ -94,10 +86,7 @@ header {
   justify-content: space-between;
 }
 
-.favorite {
-  position: absolute;
-  cursor: pointer;
-}
+
 .drawer {
   position: absolute;
   width: 400px;
@@ -173,10 +162,11 @@ header {
     margin: 15px;
   }
 
-  .Items {
-    flex: 1;
-    overflow: auto;
-  }
+  
+}
+.Item {
+  flex: 1;
+  overflow: auto;
 }
 .Korz {
   button {

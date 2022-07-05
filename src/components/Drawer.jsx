@@ -1,20 +1,20 @@
 import React from 'react'
 
-const Drawer = () => {
+const Drawer = (props) => {
   return (
-    <div style={{display: "none"}} className="overlay">
+    <div  className="overlay">
     <div className="drawer">
     <div>
       <h2>
         Корзина
-        <img className="n" height={20} src="img/Krest.svg" alt="" />
+        <img className="n" height={20} src="img/krest.png" alt="" onClick={props.onClickKrest}/>
       </h2>
     </div>
     
       <div className="Item">
         <div className="cartItem">
           <div
-            style={{ backgroundImage: "url(img/pizza.jpg)" }}
+            style={{ backgroundImage: "url(img/car/a1.png)" }}
             className="cartItemImg"
           ></div>
 
@@ -26,7 +26,7 @@ const Drawer = () => {
         </div>
         <div className="cartItem">
           <div
-            style={{ backgroundImage: "url(img/pizza.jpg)" }}
+            style={{ backgroundImage: "url(img/car/a1.png)" }}
             className="cartItemImg"
           ></div>
 

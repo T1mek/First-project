@@ -1,6 +1,10 @@
 import React from 'react'
 
-const Header = () => {
+const Header = (props) => {
+
+
+
+
   return (
     <header>
         <div className="headerLeft">
@@ -12,7 +16,7 @@ const Header = () => {
         </div>
 
         <ul className="HeaderRight">
-          <li>
+          <li onClick={props.onClickCart} style={{cursor: "pointer"}}>
             <img width={20} height={20} src="img/card.png" alt="" />
             <span>245 руб</span>
           </li>

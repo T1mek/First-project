@@ -1,11 +1,12 @@
 import React from "react";
 import styles from "./Card.module.scss";
 
-const Card = (props) => {
+const Card = ({ imageUrl,title,price,onPlus}) => {
   const [isAdded,setIsAdded]=React.useState(false)
 
 
   const onClickPlus = () =>{
+    onPlus({imageUrl,title,price})
     setIsAdded(!isAdded)
   }
 
@@ -28,14 +29,14 @@ const Card = (props) => {
         className={styles.car}
         height={110}
         width={140}
-        src={props.imageUrl}
-        alt={props.title}
+        src={imageUrl}
+        alt={title}
       />
-      <h5>{props.title}</h5>
+      <h5>{title}</h5>
       <div className={styles.cardBottom}>
         <div className={styles.card1}>
           <span>Цена:</span>
-          <b>{props.price} руб</b>
+          <b>{price} руб</b>
         </div>
         <button className={styles.button}>
           <img

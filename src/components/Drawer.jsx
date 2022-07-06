@@ -1,41 +1,37 @@
 import React from 'react'
 
-const Drawer = (props) => {
+const Drawer = ({onClickKrest,items=[]}) => {
   return (
     <div  className="overlay">
     <div className="drawer">
     <div>
       <h2>
         Корзина
-        <img className="n" height={20} src="img/krest.png" alt="" onClick={props.onClickKrest}/>
+        <img className="n" height={20} src="img/krest.png" alt="" onClick={onClickKrest}/>
       </h2>
     </div>
     
       <div className="Item">
-        <div className="cartItem">
+        {items.map((items) =>(
+          
+          <div className="cartItem">
           <div
-            style={{ backgroundImage: "url(img/car/a1.png)" }}
+            style={{ backgroundImage: `url(${items.imageUrl}` }}
             className="cartItemImg"
           ></div>
 
           <div className={{height: "1000px"}}>
-            <p>Пеперони</p>
-            <b style={{padding : "6px"}} >350р</b>
+            <p>{items.title } </p>
+            <b style={{padding : "6px"}} >{items.price} </b>
           </div>
           <img className="m" height={20} src="img/krest.png" alt="" />
         </div>
-        <div className="cartItem">
-          <div
-            style={{ backgroundImage: "url(img/car/a1.png)" }}
-            className="cartItemImg"
-          ></div>
-
-          <div className="">
-            <p>Пеперони</p>
-            <b style={{padding : "6px"}} >350р</b>
-          </div>
-          <img className="m" height={20} src="img/krest.png" alt="" />
-        </div>
+        )
+          
+        
+          
+        )}
+        
       </div>
       <div className="Korz">
         <ul>

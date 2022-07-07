@@ -72,6 +72,16 @@ header {
 .Search {
   margin: 40px;
   margin-right: 20px;
+  position: relative;
+  .x{
+   position: absolute ;
+   cursor: pointer;
+   right: 0;
+   width: 14px;
+   height: 14px;
+   top: 14px;
+   right: 10px;
+  }
   input {
     border: 1px solid rgb(247, 246, 246);
     font-size: 16px;

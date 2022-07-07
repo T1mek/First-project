@@ -6,11 +6,11 @@ import Drawer from "./components/Drawer";
 
 
 
-
 function App() {
   const [items,setItems]=React.useState([])
   const [cartItems,setCartItems]=React.useState([])
   const [cartOpened,setCartOpened] = React.useState(false)
+  const [searchValue, setSearchValue]=React.useState("")
   
   React.useEffect(()=>{
     fetch("https://62c5602fa361f72512824193.mockapi.io/items").then((res)=>{
@@ -24,8 +24,14 @@ function App() {
   const onAddToCard=(obj)=>{
     setCartItems((prev)=> [...prev,obj] )
     
-    
+  
   }
+
+  const onChangeSearchInput = (event)=>{
+    setSearchValue(event.target.value)
+  }
+
+
   
   return (
     <div className="wrapper">
@@ -40,16 +46,18 @@ function App() {
 
       <div className="content">
         <div className="Lupa">
-          <h1>Меню</h1>
+          <h1>{searchValue ? `Поиск по запросу: "${searchValue}"` : "Меню"} </h1>
           <div className="Search">
             <img width={20} height={20} src="img/lupa.png" alt="Lupa" />
-            <input placeholder="Поиск..." />
+           { searchValue && <img onClick={()=> setSearchValue("")}  className="x" height={20} src="img/krest.png" alt="Clear"/> }
+            <input onChange={onChangeSearchInput} value={searchValue} placeholder="Поиск..." />
           </div>
         </div>
 
         <div className="tt">
-          {items.map((items) => (
+          {items.map((items,index) => (
             <Card
+              key={index}
               title={items.title}
               price={items.price}
               imageUrl={items.imageUrl}

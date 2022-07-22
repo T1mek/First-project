@@ -1,5 +1,5 @@
 import React from "react";
-
+import axios from "axios";
 import Card from "./components/Card/Card";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
@@ -11,20 +11,26 @@ function App() {
   const [searchValue, setSearchValue] = React.useState("");
 
   React.useEffect(() => {
-    fetch("https://62c5602fa361f72512824193.mockapi.io/items")
+    axios
+      .get("https://62c5602fa361f72512824193.mockapi.io/items")
       .then((res) => {
-        return res.json();
-      })
-      .then((json) => {
-        setItems(json);
-      });
-  }, []);
+        setItems(res.data);
+        });
+        axios.get("https://62c5602fa361f72512824193.mockapi.io/Card").then((res) => {
+        setCartItems(res.data)});
+        
+   }, []);
 
- 
-  
   const onAddToCard = (obj) => {
+    axios.post("https://62c5602fa361f72512824193.mockapi.io/Card",obj);
+
     setCartItems((prev) => [...prev, obj]);
   };
+  const onRemoveItem = (id)=>{
+    axios.delete(`https://62c5602fa361f72512824193.mockapi.io/Card/${id}`);
+
+    setCartItems((prev) => prev.filter(it=> it.id !==id) );
+  }
 
   const onChangeSearchInput = (event) => {
     setSearchValue(event.target.value);
@@ -34,6 +40,7 @@ function App() {
     <div className="wrapper">
       {cartOpened && (
         <Drawer
+        onRemove={onRemoveItem}
           items={cartItems}
           onClickKrest={() => {
             setCartOpened(false);
@@ -49,9 +56,7 @@ function App() {
 
       <div className="content">
         <div className="Lupa">
-          <h1>
-            {searchValue ? `Поиск по запросу: "${searchValue}"` : "Меню"}{" "}
-          </h1>
+          <h1>{searchValue ? `Поиск по запросу: "${searchValue}"` : "Меню"}</h1>
           <div className="Search">
             <img width={20} height={20} src="img/lupa.png" alt="Lupa" />
             {searchValue && (

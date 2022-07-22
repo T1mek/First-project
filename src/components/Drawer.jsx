@@ -3,14 +3,9 @@ import React from 'react'
 
 
 
-const Drawer = ({onClickKrest,items=[]}) => {
+const Drawer = ({onClickKrest,items=[],onRemove}) => {
 
-  const [onClose,setOnClose]=React.useState([])
-
-
-const Close = ()=>{
-  setOnClose()
-}
+  
 
   return (
     <div  className="overlay">
@@ -35,7 +30,7 @@ const Close = ()=>{
             <p>{items.title } </p>
             <b style={{padding : "6px"}} >{items.price} </b>
           </div>
-         {onClose && <img className="m" height={20} src="img/krest.png" alt="Krest" onClick={Close} />}
+         <img className="m" height={20} src="img/krest.png" alt="Krest" onClick={()=>onRemove(items.id)} />
         </div>
         )
           

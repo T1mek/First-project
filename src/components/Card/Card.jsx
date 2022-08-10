@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Card.module.scss";
 
-const Card = ({ imageUrl,title,price,onPlus}) => {
+const Card = ({ id,imageUrl,title,price,onPlus,onFavorites,favorited=false}) => {
   const [isAdded,setIsAdded]=React.useState(false)
 
 
@@ -10,8 +10,9 @@ const Card = ({ imageUrl,title,price,onPlus}) => {
     setIsAdded(!isAdded)
   }
 
-  const [isFavorite, setIsFavorite]=React.useState(false)
+  const [isFavorite, setIsFavorite]=React.useState(favorited)
   const onFavorite=()=>{
+    onFavorites({ id,imageUrl,title,price})
     setIsFavorite(!isFavorite)
   }
 

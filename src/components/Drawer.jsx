@@ -19,7 +19,7 @@ const Drawer = ({ onClickKrest, items = [], onRemove }) => {
 
         <div className="Item">
           {items.map((items) => (
-            <div className="cartItem">
+            <div key={items.id} className="cartItem">
               <div
                 style={{ backgroundImage: `url(${items.imageUrl}` }}
                 className="cartItemImg"
